@@ -1,5 +1,23 @@
+* {
+  font-family: "Press Start 2P", fantasy;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   background: #fafafa;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  bottom: 0px;
+  background-image: url("/imgs/background.png");
+  background-repeat: repeat-x;
+  animation: slideright 2000s infinite linear;
+  -webkit-animation: slideright 2000s infinite linear;
+  width: 100%;
+  height: 200px;
 }
 
 .dino {
@@ -18,6 +36,16 @@ body {
   background-image: url(imgs/cactus.png);
 }
 
+.score {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  top: -800px;
+  justify-content: center;
+
+  font-size: 2rem;
+}
+
 .game-over {
   text-align: center;
   color: #666;
@@ -32,15 +60,4 @@ body {
   to {
     background-position: 0%;
   }
-}
-
-.background {
-  position: absolute;
-  bottom: 0px;
-  background-image: url("/imgs/background.png");
-  background-repeat: repeat-x;
-  animation: slideright 2000s infinite linear;
-  -webkit-animation: slideright 2000s infinite linear;
-  width: 99.7%;
-  height: 200px;
 }
