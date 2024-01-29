@@ -1,6 +1,7 @@
 const dino = document.querySelector(".dino");
 const background = document.querySelector(".background");
 const scoreSpan = document.querySelector(".background .score span");
+const button = document.getElementsByTagName("button");
 
 let isJumping = false;
 let isGameOver = false;
@@ -8,6 +9,7 @@ let position = 0;
 let scorePoints = 0;
 
 function handleKeyUp(event) {
+  if (isGameOver) console.log(button[0].onclick());
   if (event.keyCode === 32) {
     if (!isJumping) {
       jump();
@@ -67,19 +69,24 @@ function createCactus() {
 
 function gameOver() {
   isGameOver = true;
-  // document.body.innerHTML = '<h1 class="game-over">Fim de jogo</h1>';
+  document.body.innerHTML = `
+    <div class="game-over">
+      <h1>Fim de jogo</h1>
+      <p>
+        Você acumulou <span>${scorePoints}</span> pontos!
+      </p>
+      <button onclick="window.location.reload()">Reiniciar</button>
+    </div>`;
 }
 
 function updateScore() {
+  if (isGameOver) return;
   scorePoints++;
   let formattedScore = scorePoints.toString().padStart(5, "0");
   scoreSpan.innerHTML = formattedScore;
 }
 
-if (isGameOver);
 setInterval(updateScore, 1);
 createCactus();
-
-gameLoop();
 
 document.addEventListener("keydown", handleKeyUp);
